@@ -23,6 +23,7 @@ VPC를 설정하여 외부에서 직접 접근이 가능한 네트워크 영역�
 
 #### Profile 분리
 로컬환경에선 H2를 쓰고 운영환경에선 MySQL을 쓰도록 하기 위해 application-local.yml, appliaction-prod.yml을 만들었다.
+
 ![profile 분리](img6.png)
 ![local 환경 결과](img7.png)
 ![prod 환경 결과](img8.png)
