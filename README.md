@@ -44,4 +44,17 @@ management.endpoints.web.exposure.include=health
 ec2의 public ip는 43.203.200.229 이다.
 
 ---
+### DB 분리 및 보안 연결하기
+#### Actuator Info 엔드포인트
+parameter store에 team-name 값을 저장하였고 /actuator/info 접속시 이 저장된 팀 이름이 출력되도록 하였다.
+![acutator info](img11.png)
+http://43.203.200.229:8080/actuator/info
+
+#### RDS 보안 그룹 
+RDS의 보안 그룹을 EC2의 보안 그룹과 같게 설정하여 EC2와 RDS의 연결을 보장하였다.
+![](img10.png)
+
+---
+### 프로필 사진 기능 추가와 권한 관리
+
 
