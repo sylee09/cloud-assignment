@@ -2,6 +2,7 @@
 AWS Budget 설정을 통해 1달에 최대 한도를 100달러로 설정하였고 비용이 일정치가 되면 경고 이메일이 오도록 하였다.
 ![budget 설정](img1.png)
 
+---
 ### 네트워크 구축 및 핵심 기능 배포
 #### VPC 설계
 VPC는 퍼블릭 클라우드 서비스 내에 논리적으로 격리된 고객 전용 사설 네트워크 공간으로 서브넷 구성, IP 주소 대역 설정,
@@ -30,4 +31,17 @@ VPC를 설정하여 외부에서 직접 접근이 가능한 네트워크 영역�
 Controller 단에 요청이 들어오면 INFO 레벨로 로그를 남기도록 하였고
 예외발생시 RestControllerAdvice를 사용하여 예외처리를 하도록 하였으며 ERROR 레벨로 스택 트레이스를 남기도록 하였다.
 
+#### 상태 모니터링
+spring-boot-starter-actuator 의존성을 추가하여 연결된 서버의 상태를 모니터링 하였다.
+```
+management.endpoints.web.exposure.include=health
+```
+/actuator/health라는 url로 서버의 다운 유무를 알수 있다.
+![actuator 결과](img9.png)
+
+#### 배포
+위의 boot application을 scp를 사용하여 ec2에 올려놓았다.
+ec2의 public ip는 43.203.200.229 이다.
+
+---
 
