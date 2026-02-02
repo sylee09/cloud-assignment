@@ -1,9 +1,7 @@
 package sparta.cloudassignment.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import sparta.cloudassignment.dto.MemberRequestDto;
 import sparta.cloudassignment.dto.MemberResponseDto;
 import sparta.cloudassignment.entity.Member;
@@ -16,7 +14,12 @@ public class MemberController {
     private final MemberService memberService;
 
     @PostMapping("/api/members")
-    public MemberResponseDto saveMember(@RequestBody MemberRequestDto requestDto){
+    public MemberResponseDto saveMember(@RequestBody MemberRequestDto requestDto) {
         return memberService.saveMember(requestDto);
+    }
+
+    @GetMapping("/api/members/{id}")
+    public MemberResponseDto getMember(@PathVariable Long id) {
+        return memberService.getMemberById(id);
     }
 }

@@ -3,6 +3,7 @@ package sparta.cloudassignment.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
 import sparta.cloudassignment.dto.MemberRequestDto;
 import sparta.cloudassignment.dto.MemberResponseDto;
 import sparta.cloudassignment.entity.Member;
@@ -19,6 +20,11 @@ public class MemberService {
         Member member = dto.toEntity();
         Member save = memberRepository.save(member);
         return MemberResponseDto.toDto(save);
+    }
+
+    public MemberResponseDto getMemberById(Long id) {
+        Member member = memberRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Member not found"));
+        return MemberResponseDto.toDto(member);
     }
 
 }
