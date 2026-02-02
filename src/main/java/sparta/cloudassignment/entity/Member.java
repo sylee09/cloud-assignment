@@ -18,6 +18,7 @@ public class Member {
     private String name;
     private int age;
     private String mbti;
+    private String fileUrl;
 
     @Builder
     private Member(String name, int age, String mbti) {
