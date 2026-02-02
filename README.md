@@ -56,5 +56,15 @@ RDS의 보안 그룹을 EC2의 보안 그룹과 같게 설정하여 EC2와 RDS�
 
 ---
 ### 프로필 사진 기능 추가와 권한 관리
+배포의 환경은 ec2로 ec2에서는 iam access key가 필요가 없고 권한 만으로 s3에 접근이 가능하다.
+따라서 iam role을 통해 s3에 접근하고 다운로드/업로드 할 수 있는 권한을 주었고 prod profile에서 iam access key를 저장하는 부분을 삭제하였다.
+
+- [POST]/api/members/{id}/profile-image 함수를 통해 MultiFile로 이미지를 받아 S3 버킷에 업로드하고, 이미지 URL을 DB에 업데이트하는 기능을 만들었다.
+- [GET] /api/members/{id}/profile-image 함수를 통해 Presigned URL을 생성하여 반환하도록 하였다.
+
+#### Presigned URL
+https://sparta-assignment-sy9999-files.s3.ap-northeast-2.amazonaws.com/uploads/0fc90d33-a887-4b1f-a50d-36bdffac4894_IMG_8709.jpg?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEBsaDmFwLW5vcnRoZWFzdC0yIkcwRQIhALUjA4ueyywm9gAUWOK%2FpNLGAjdv57QIf1MVo2LfLP%2BSAiB%2B%2F3unREIt3p0o64AdQlS2heDyufRqUu%2F25yo53Co6cyrSBQjk%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAAaDDIyNjYyODUxMDc2NCIMXEpOnEeUrcC4z7KtKqYFva8u20Gozd8NOcmoiDNw%2BtU9wtQ1iHvtfQAWrWWvErSVvy1i2C18euMrMnigjwLfrgq60pcf%2BtTGPFdlE8%2FTaHnsV4KcEDkyhdzCMA2P%2BObTUNhEJCl1R8qNJ5TF265%2F4yQz%2BBhnPOMEFLM2i%2BTLxbrzc11VS%2Buxt3ygbtPqealjtCZwUvu8xpGBKSjfgao4F%2BbVfTp0EADtOnkPa95zE9WltzB7JNpkq69%2BJ2F134%2BU5JvBD14G9DU8AV8nVQz3BFJTgdHjpmSoxtfJ4wgBTyHBDHEiuZrASm%2B2syXEktVDfSj5NtipCPJ6%2FPU4wpRJ5a41Vo1uwviA1gh7OHeoHcsOarqO7WEaVO4mFNKuX2mdi%2Bf617A4R0HGZ%2FiQy4nP3J8fL4NMzutFwepWymC72Io6zLs5TWF7JT8FEjmN70vcVTlBlDG2wMJZJzrj9MW55Bd%2BiEAuf946dxWg6glax5XaYBEXdck2sG77CHed4xOwAP1DMPl2IHp3a3h8b7IbCkC78%2Bdg6Q9HTMcwBOHLwVrzOAfJuPJwPVcmhIgsg8f3XMUjo6P6G6sa784%2B1cPDiNTvSTCgZaZzQh4%2BDnb%2FtWy6BFUsmXKpJVRz6ryWuwYHD1JLDzsdtJm012W0SzjZWOg1B2j%2BcuDMesLXaaj3WFyDvVY0nU0F6xBLDViV7WsX0OlRmO0qaTLTJU%2FfS7a9L03Lf%2FQdL1JkS7Bq%2B1A5k88YxVbhW4lSc7E3vCWEsPwGQhssT1ochHMTr1b8qRfBTYZjQtw%2BzmpSOVwai5kDiHWZmTwODh2l30jTeSAvH5yqD5utzFovuq%2BHOnOgX%2FvlEYysE%2FpN56Wz6mgpHLTh0Hjf5Y2OnQJNIpULTQoPX3avOhhj7YTCMNn%2FdHYsO7PqUletldOIMJOLgswGOrEB4aQnLGYDMsDho1SxGOigtw8vCuacSuHcvToxDZhtRgYOjAmg%2FnJ3%2BNLxkKwEABUizWARLqpl9temOk0QUmJ0CVNggBYE9p8a5QCc4W18ut1nJHUgisZYTI2k69L7CFhWDbK%2F%2BunIE2SaDAGWXTlQE7w7HBmZ3catwLSELzrsd6cwUUqLKlpObS%2Fkc7HJI7l6k2VTM2Xi%2BGVOJP7Ygf%2BsWZzT7x1XEYNonaZe8DEQu5Hi&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20260202T113129Z&X-Amz-SignedHeaders=host&X-Amz-Credential=ASIATJRA4UQWDC7IP6JC%2F20260202%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Expires=604800&X-Amz-Signature=08254db50ae754e1123d551a5365f158468cf64fbb1f0a8c2ce896b560dfb13a
+
+위 URL은 2/9일 까지 유효하다.
 
 
