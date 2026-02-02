@@ -16,3 +16,18 @@ VPC를 설정하여 외부에서 직접 접근이 가능한 네트워크 영역�
 ![ec2 생성](img4.png)
 ![ec2 생성](img5.png)
 
+#### 팀원 정보 저장 및 조회 API 개발
+티원의 이름, 나이, MBTI를 JSON으로 받아 저장하는 API를 개발하였고
+저장된 팀원 정보를 조회하는 API를 개발하였다.
+
+#### Profile 분리
+로컬환경에선 H2를 쓰고 운영환경에선 MySQL을 쓰도록 하기 위해 application-local.yml, appliaction-prod.yml을 만들었다.
+![profile 분리](img6.png)
+![local 환경 결과](img7.png)
+![prod 환경 결과](img8.png)
+
+#### 로깅
+Controller 단에 요청이 들어오면 INFO 레벨로 로그를 남기도록 하였고
+예외발생시 RestControllerAdvice를 사용하여 예외처리를 하도록 하였으며 ERROR 레벨로 스택 트레이스를 남기도록 하였다.
+
+
