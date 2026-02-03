@@ -13,4 +13,10 @@ public class ExceptionControllerAdvice {
         log.error("[API-LOG] illegal argument exception: {}", e.getStackTrace());
         return ResponseEntity.badRequest().body(e.getMessage());
     }
+
+    @ExceptionHandler(value = UploadException.class)
+    public ResponseEntity<String> handleUploadException(UploadException e) {
+        log.error("[API-LOG] upload exception: {}", e.getStackTrace());
+        return ResponseEntity.badRequest().body(e.getMessage());
+    }
 }
